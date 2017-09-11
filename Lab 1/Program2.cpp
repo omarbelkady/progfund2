@@ -44,6 +44,7 @@ cin.sync();
 cin.clear();
 
 cout<< n1 << " " << time1 << " " << endl << n2 << " " << time2 << " " << endl << n3 << " " << time3 << " ";
-
+#std::setprecision(2)
 	return 0;
 }
+#std::setprecision(2)
