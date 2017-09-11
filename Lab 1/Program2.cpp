@@ -8,23 +8,42 @@ string n1 = "";
 string n2 = "";
 string n3 = "";
 
-float time1 = 0;
-float time2= 0;
-float time3 = 0;
+float time1;
+float time2;
+float time3;
 
 cout<< "please enter a name for the first runner: ";
-getline (cin, n1);
+cin >> n1;
+cin.sync();
+cin.clear(); 
 
 cout<< "please enter a name for the second runner: ";
-getline (cin, n2);	
+cin >> n2;
+cin.sync();
+cin.clear(); 
 	
-cout<< "please enter a name for the third runner: ";
-getline (cin, n3);	
-	
-cout << "please enter the time for the first runner: ";
+cout<< "please enter a name for the third runner: " ;
+cin >> n3;
+cin.sync();
+cin.clear();
 
-cout << "please enter the time for the second runner: ";
-	
-cout << "please enter the time for the third runner: ";	
+cout << "please enter the time for the first runner: " ;
+cin >> time1;
+cin.sync();
+cin.clear();
+
+cout << "please enter the time for the second runner: " ;
+cin >> time2;
+cin.sync();
+cin.clear();
+
+
+cout << "please enter the time for the third runner: ";
+cin >> time3;
+cin.sync();
+cin.clear();
+
+cout<< n1 << " " << time1 << " " << endl << n2 << " " << time2 << " " << endl << n3 << " " << time3 << " ";
+
 	return 0;
 }
