@@ -1,0 +1,134 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+
+void getData(double &, double&, double&);
+void displayInfo(double &, double&, double&);
+double getSubTotal(double&, double&);
+bool checkshipandhand(double &, double&)
+
+template <class T>
+void debug(T key, string varName)
+{
+	cout<<"DEBUG"<<endl;
+	cout<<varName<<" is "<<key<<endl;
+}
+
+
+int main()
+{
+double spoolsOrdered = 0;
+double spoolsStocked= 0;
+double charges = 0;
+double backOrdered=0;
+/*cout << fixed << setprecision(2) << endl;*/
+
+getData(spoolsOrdered, spoolsStocked, charges);
+displayInfo(spoolsOrdered, backOrdered, charges);
+
+
+
+return 0;
+}//end int main
+
+
+void getData(double & spoolsOrdered, double & spoolsStocked, double & charges)
+{
+
+    char specialChargeYN=' ';
+    
+    //get spools ordered
+    cout << "How many spools ordered? ";
+    cin >> spoolsOrdered;
+    while (spoolsOrdered < 1)
+    {
+        cout << "You must enter at least 1 spool, please enter spools ordered: ";
+        cin >> spoolsOrdered;
+        
+    }
+    
+    //get spools in stock
+    cout << "How many spools in stock? ";
+    cin >> spoolsStocked;
+    while (spoolsStocked < 0)
+    {
+        cout << "Please enter a positive number for spools in stock: ";
+        cin >> spoolsStocked;
+    }//end while
+        
+        
+    
+    //are there special S&H charges?
+    /*cout << "Are there any special shipping and handling charges?(Y/N) ";
+    cin >> specialChargeYN;*/
+    
+    
+	//get S&H charges
+	cout << "What are the special charges per spool? ";
+    cin >> charges;
+	while (charges < 0)
+    {
+        cout << "Please enter a positive number for S&H charges: ";
+        cin >> charges;
+	}//end while (charges)
+        
+}//end voidGetdata
+
+void displayInfo(double & spoolsOrdered, double & spoolsStocked, double & charges)
+{double backOrdered=0;
+    double subTotal=getSubTotal(spoolsOrdered, charges);
+    double totalSH=0;
+    double TOTAL=0;
+    double spools = abs(spoolsStocked - spoolsOrdered);
+
+    //Spools ready to ship from stock
+    cout << "There are " << spools << " spools ready to be shipped. " << endl;
+    
+    // if spools ordered is more than spools stocked...
+    if (spoolsOrdered > spoolsStocked)
+    {
+        //Backorder
+        backOrdered = abs(spoolsOrdered - spoolsStocked);
+        cout << "There are " << abs(backOrdered) << " spools backordered." << endl;
+		       
+		//Subtotal of spools
+        
+		cout << "Subtotal: $" << getSubTotal(spoolsOrdered, charges) << endl;
+        
+        //S&H charges
+        totalSH = spoolsOrdered * charges;
+        cout << "S & H Total: $" << totalSH << endl;
+     }
+    else
+    {
+        //Backorder
+        cout << "There are no spools backordered." << endl;
+        
+        //Subtotal of spools
+        subTotal = spoolsOrdered * 100;
+        
+        cout << "Subtotal: $" << subTotal << endl;
+        
+        //S&H charges
+        totalSH = spoolsOrdered * charges;
+        cout << "S & H Total: $" << totalSH << endl;
+    }
+
+    
+    //Order Total
+    TOTAL = totalSH + subTotal;
+   cout << "The total of the order ready to ship is: $" << TOTAL << endl;
+   cout <<   getSubTotal(spoolsOrdered, charges);
+}//end void displayInfo 
+	bool checkshipandhand(double & charges, double & spoolsOrdered){
+		if (charges > 10){
+		return true}
+		return false}
+	
+
+double getSubTotal(double &spoolsOrdered, double& charges)
+{
+	return spoolsOrdered*charges;
+}
