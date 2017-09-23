@@ -1,0 +1,90 @@
+// Template Program
+// Programmer: Omar Belkady
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <sstream>
+using namespace std;
+
+
+
+void getData(double &spoolamount, double &totalspool,double &shippingcharge)
+{
+cout<<"How many spools ordered? ";
+cin>>spoolamount;
+cout<<"How many spools total? ";
+cin>>totalspool;
+
+while(spoolamount<=0)
+{
+cout<<"must order >0 spools"<<endl;
+cout << "How many spools ordered? ";
+cin >> spoolamount;	
+}
+while(totalspool<0)
+{
+cout<<"must have poitive spool stock"<<endl;
+cout << "How many spools total? ";
+cin >> totalspool;
+}
+string checker = "";
+cout<<"would you like to add special charges? (Y/N)";
+cin>>checker;
+if(checker == "Y" || checker == "y")
+{
+	cout<<"how much special charges?";
+	cin>>shippingcharge;
+}
+else if(checker == "N" || checker == "n")
+{
+	cout<<"0 special charges inputed";
+	shippingcharge = 0;
+}
+
+
+}//end voidGetdata
+
+void displaystatus(double spoolsgot,double totalstock,double extracharge)
+{
+   // if spools ordered is more than spools stocked...
+    if (spoolsgot > totalstock)
+    {
+	cout<<"amount of spools ordered "<<spoolsgot<<endl;
+	cout<<"amount of spools in shipment "<<totalstock<<endl;
+	double back = spoolsgot - totalstock;
+	cout<<"Back Order "<<back<<endl;
+	//charges
+	double spoolcharges = (totalstock)*(100);
+	cout<<"Total Spool Charges "<<spoolcharges<<"$"<<endl;
+	double shipcost = (totalstock)*(extracharge+10);
+	cout<<"Total Shipping cost "<<shipcost<<"$"<<endl;
+	double grandtotal = (spoolcharges)+(shipcost);
+	cout<<"total this shipment "<<grandtotal<<"$"<<endl;
+	}
+	else //if (spoolsgot <= totalstock)
+	{
+	cout<<"amount of spools ordered "<<spoolsgot<<endl;
+	cout<<"amount of spools in shipment "<<spoolsgot<<endl;
+	cout<<"Back Order 0 "<<endl;
+	double spoolcharges = (spoolsgot)*(100);
+	cout<<"Total Spool Charges "<<spoolcharges<<"$"<<endl;
+	double shipcost = (spoolsgot)*(extracharge+10);
+	cout<<"Total Shipping cost "<<shipcost<<"$"<<endl;
+	double grandtotal = (spoolcharges)+(shipcost);
+	cout<<"total this shipment "<<grandtotal<<"$"<<endl;
+	}
+    	
+}
+int main()
+{
+
+double spools= 0;
+double stock= 0;
+double speccharges=0;
+
+getData(spools, stock, speccharges);
+displaystatus(spools,stock,speccharges);
+
+
+return 0;
+}//end int main
