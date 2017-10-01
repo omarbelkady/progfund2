@@ -5,6 +5,7 @@ annual number of deaths and annual number of Births
 *******************************************************************************/
 
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -76,22 +77,19 @@ class Population
     
     double calcBirthRate()
     {
-        return(annualNumberOfBirths/currentPopulation);
+        return((double) (annualNumberOfBirths)/ (double) (currentPopulation));
     }
     
     
     double calcDeathRate()
     {
-        return(annualNumberOfDeaths/currentPopulation);
+        return((double)(annualNumberOfDeaths)/(double)(currentPopulation));
     }
 };
 int main()
 {
     Population pop;
-    /*pop.setPopulation(200);   //Telling the object to perform the function
-    pop.setBirths(400);  //Telling the object to perform the function
-    pop.setDeaths(700);    //Telling the object to perform the function
-    */
+    
     int p = 0;
     int b = 0;
     int d = 0;
@@ -110,11 +108,10 @@ int main()
     pop.setDeaths(d);
     
     cout<<"The current Population is "<<p<<endl;
-    cout<<"The current Birth Rate is "<<b<<endl;
-    cout<<"The current Death Rate is "<<d<<endl;
+    cout<<"The current Birth Rate is "<<setprecision(2)<<pop.calcBirthRate()<<endl;
+    cout<<"The current Death Rate is "<<setprecision(2)<<pop.calcDeathRate()<<endl;
     
     
 
     return 0;
 }
-
