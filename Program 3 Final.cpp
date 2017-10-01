@@ -1,4 +1,4 @@
-/**********************Alan Loves Nehaaaaaaa********************************************************
+/******************************************************************************
 Omar Belkady
 I am designing a Population Class that stores a cuurent Population,
 annual number of deaths and annual number of Births
