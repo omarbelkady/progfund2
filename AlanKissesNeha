@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+class TestGrader
+{
+    private:
+    
+    
+    
+    public: 
+        void setKey();
+        double getGrade();
+    
+    TestGrader()
+    {   setKey = 0;
+        getGrade = 0;
+        string n1 = 0;
+        
+        
+/*
+    string Key[20] = {"B","D","A","A","C","A","B","A","C,"D","B","C","D","A","D","C","C","B","D","A"}
+    string Grade
