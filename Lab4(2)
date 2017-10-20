@@ -1,0 +1,187 @@
+//Omar Belkady
+//Lab4
+//This program will grade a students test. It will then tell the user whether or not the
+//student passed or failed
+
+
+
+
+#include <iostream>
+
+#include <string>
+
+#include <fstream>
+
+using namespace std;
+
+
+class TestGrader
+
+{
+
+private:
+
+    const int SIZE = 20;
+
+    int sum;
+
+    int wrong;
+
+    int count;
+
+ 
+
+public:
+
+    TestGrader();
+
+    void setKey(char[]);
+
+    void setStudent(char[]);
+
+    int grade(char[], char[]);
+
+};
+
+ 
+
+TestGrader::TestGrader()
+
+{}
+
+ 
+
+void TestGrader::setKey(char answers[])
+
+{
+
+    for (count = 0; count < SIZE; count++)
+
+    {
+
+        cout << "Please enter the correct answer for question " << (count + 1) << ": ";
+
+        cin >> answers[count];
+
+    }
+
+}
+
+ 
+
+void TestGrader::setStudent(char student[])
+
+{
+
+    ifstream dataIn;
+
+    dataIn.open("student.txt");
+
+ 
+
+    for (count = 0; count < SIZE; count++)
+
+        dataIn >> student[count];
+
+ 
+
+    dataIn.close();
+
+ 
+
+}
+
+ 
+
+int TestGrader::grade(char answers[], char student[])
+
+{
+
+    int sum = 0;
+
+ 
+
+    for (count = 0; count < SIZE; count++)
+
+    {
+
+        if (answers[count] != student[count])
+
+        {
+
+            cout << endl;
+
+            cout << "Answer " << (count + 1) << " is wrong.\n";
+
+        }
+
+        else
+
+        {
+
+            sum += 1;
+
+        }
+
+    }
+
+     
+
+    return sum;
+
+}
+
+ 
+
+int main()
+
+{
+
+    TestGrader testGrader;
+
+    const int SIZE = 20;
+
+    int wrong;
+
+    char answers[SIZE];
+
+    char student[SIZE];
+
+     
+
+    
+ 
+
+    testGrader.setKey(answers);
+
+    testGrader.setStudent(student);
+
+    int sum = testGrader.grade(answers, student);
+
+ 
+
+    wrong = SIZE - sum;
+
+     
+
+    cout << "\nYou got " << sum << " right.\n";
+
+    cout << "You got " << wrong << " wrong.\n";
+
+ 
+
+    if (sum >= 15)
+
+    {
+
+        cout << "\nCongratulations, you passed!\n\n";
+
+    }
+ 
+    else
+    {
+        cout << "\nSorry, you failed.\n\n";
+    }
+    return 0;
+ 
+}
