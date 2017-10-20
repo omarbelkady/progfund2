@@ -1,0 +1,77 @@
+//Omar Belkady
+//This program uses 
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    //20 because the test has 20 questions
+    const int SIZE = 20;
+    //4 options
+    char A, B, C, D;
+    //Right Test Answer
+    char correctAnswers[SIZE] = {'B', 'D', 'A', 'A', 'C', 'A', 'B', 'A', 'C', 'D', 'B', 'C', 'D', 'A', 'D', 'C', 'C', 'B', 'D', 'A'};
+    //Array that stores the user's answers
+    char userAnswers[SIZE];
+    //Array that holds all the right and wrong answers
+    char Correctness[SIZE];
+    int total = 0;
+    //This counts all the right answers and it can only be an integer, not a float nor a double
+    int index, count; //counter variables
+    int finalanswercount;
+
+    cout << "Driver's License Exam Grader" << endl;
+    //for loop takes in user selection
+    for (index = 1; index < 20; index++)
+    {
+        cout << "Enter your answer for question"<<index<<":";
+        cin >> userAnswers[index];
+
+        //if loop to make sure the user only enter a-d either upper or lowercase
+        if (userAnswers[index] != 'A' && userAnswers[index] != 'B' && userAnswers[index] != 'C' && userAnswers[index] != 'D' && userAnswers[index] != 'a' && userAnswers[index] != 'b' && userAnswers[index] != 'c' && userAnswers[index] != 'd')
+        {
+            //for loop that tests if the character entered is A B C or D and nothing else
+            cout<<"You must enter a letter between A to D"<<endl;
+            cin>>userAnswers[index];
+        }
+        else
+        {
+            //if user answer is correct, store R and and 1 to sum.
+            Correctness[index] = 'R';
+        }
+    }
+    
+    
+    //this for loop is to read the "correctness" array and output Right or Wrong accordingly
+   for (index = 1; index < 21; index++)
+    {
+        //if correctness is W, meaning is it Wrong, output that it is incorrect
+        //no output here if correct
+        if (Correctness[index] == 'W')
+        {
+            cout << "Answer " << index << " is incorrect." << endl;
+        }
+        else
+        {
+            total += 1;
+        }
+    }
+
+    finalanswercount = 20 - total;
+    //output final results
+    cout << "Results (minimum 15 correct to pass):" << endl;
+    cout << "You got " << total << " correct. " << endl;
+    cout << "You missed " << (20 - total) << "." << endl;
+    if (total >= 15)
+    {
+        cout << "You have passed!" << endl;
+    }
+    else
+    {
+        cout << "You have failed." << endl;
+    }
+
+}
