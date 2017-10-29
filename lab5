@@ -1,0 +1,68 @@
+//Omar Belkady
+//Lab 5
+//CH9 Sort
+//
+//Prof: Bernard Ku
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+template<class ItemType>
+void bubbleSort(ItemType theArray[], int n)//bubble sort
+{
+   bool sorted = false; // False when swaps occur
+   int pass = 1;
+   while (!sorted && (pass < n))
+   {
+      // At this point, theArray[n+1-pass..n-1] is sorted
+      // and all of its entries are > the entries in theArray[0..n-pass]
+      sorted = true; // Assume sorted
+      for (int index = 0; index < n - pass; index++)
+      {
+         // At this point, all entries in theArray[0..index-1]
+         // are <= theArray[index]
+         int nextIndex = index + 1;
+         if (theArray[index] > theArray[nextIndex])
+         {
+            // Exchange entries
+           swap(theArray[index], theArray[nextIndex]);
+            sorted = false; // Signal exchange
+         } // end if
+      }  // end for
+      // Assertion: theArray[0..n-pass-1] < theArray[n-pass]
+      
+      pass++;
+   }  // end while
+}  // end bubbleSort
+
+
+int main()
+
+{
+   const int SIZE = 20;
+   
+   
+   string name[7] = 
+   {
+       "Neha", "Polanco", "AlanSUCKS", "Nidhi", "AlanLOVESNEHA", "ALANTHINKSNEHA","ALANDAYDREAMNEHA"
+   };
+   /*{"Collins, Bill",  "Smith, Bart",  "Michalski, Joe", "Griffin, Jim",
+    "Sanchez, Manny", "Rubin Sarah", "Taylor, Tyrone", "Johnson, Jill", 
+    "Allison, Jeff",  "Moreno, Juan", "Wolfe, Bill",    "Whitman, Jean",
+    "Moretti, Bella", "Wu, Hong",     "Patel, Renee",   "Harrison, Rose",
+    "Smith, Cathy",   "Conroy, Pat",  "Kelly, Sean",    "Holland, Beth"};*/
+	
+	
+	
+	// Insert your code to complete this program.
+	bubbleSort(name,20);
+	for (int i=0;i<20;i++)
+	{
+	    cout<<name[i]<<endl;
+	}
+    
+    
+
+    return 0;
+}
