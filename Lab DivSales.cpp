@@ -1,6 +1,6 @@
 // Class definetion for DivSales
 //
-// Created by Omar Belkady
+//Omar Belkady
 
 
 #include <iostream>
